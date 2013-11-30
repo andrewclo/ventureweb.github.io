@@ -167,7 +167,7 @@ $(function () {
       $('.viewport').removeClass('open');
       var current = location.protocol + '//' + location.hostname + location.pathname;
       //Need history browser detection and update state with proper page title, description.
-      history.pushState(dest , dest, dest);
+      history.pushState(dest, dest, dest);
       fullscreen();
     });
   });
