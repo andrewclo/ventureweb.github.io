@@ -132,7 +132,11 @@ var UI = (function ($) {
 		}, {duration: d, queue: false});
   	};
     return jk;
+	
 })(jQuery);
+
+
+
 
 /*
 	start it up
@@ -152,7 +156,28 @@ $(function () {
 		});
 	}
 	
-	var wheight = $( window ).height();
-	$('section.full').height(wheight);
+	
+	
+	//Page load
+	$( ".menu a" ).click(function(e) {
+	//Smooth loading is only working for main menu items.
+	  var dest = $(this).attr('href');
+    e.preventDefault();
+    $( ".main" ).load( dest+" .main", function() {
+      $('.viewport').removeClass('open');
+      var current = location.protocol + '//' + location.hostname + location.pathname;
+      //Need history browser detection and update state with proper page title, description.
+      history.pushState(dest , dest, dest);
+      fullscreen();
+    });
+  });
+	
+  function fullscreen() {
+    var wheight = $( window ).height();
+    $('section.full').height(wheight);  
+	}
+	
+	fullscreen();
+	
 	
 });
